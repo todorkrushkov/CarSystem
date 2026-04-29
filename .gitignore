@@ -1,0 +1,60 @@
+# Build outputs
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.opendb
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!**/packages/build/
+nuget.exe
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# MSBuild
+[Ll]og/
+[Ll]ogs/
+
+# Publish profiles
+PublishProfiles/
+*.pubxml
+*.pubxml.user
+
+# Rider
+.idea/
+*.sln.iml
+
+# Roslyn
+*.dotCover
+
+# Test results
+TestResults/
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+coverage*/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~

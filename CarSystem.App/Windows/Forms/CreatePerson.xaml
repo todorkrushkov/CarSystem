@@ -1,0 +1,131 @@
+<Controls:MetroWindow x:Name="CreatePersonWindow" x:Class="CarSystem.App.Windows.Forms.CreatePerson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarSystem.App.Windows.Forms"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Регистриране на нов потребител" Height="460" Width="640"
+        GlowBrush="#154360" BorderBrush="#154360"
+        Background="#EEF1F5"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Хедър -->
+        <Border Grid.Row="0" Background="#154360">
+            <TextBlock Text="РЕГИСТРИРАНЕ НА НОВ ПОТРЕБИТЕЛ"
+                       Foreground="White" FontSize="15" FontWeight="Bold"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Форма -->
+        <Border Grid.Row="1" Background="White" Margin="12,12,12,12">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.13" Color="#000000"/>
+            </Border.Effect>
+            <StackPanel Margin="20,16,20,16">
+
+                <!-- Две колони: Ляво / Дясно -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="14"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="12"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Ред 1 -->
+                    <StackPanel Grid.Row="0" Grid.Column="0">
+                        <Label x:Name="FirstNameLabel" Content="Въведете име:"
+                               Style="{StaticResource FormLabel}"/>
+                        <TextBox x:Name="FirstNameTextBox" Height="30"
+                                 Controls:TextBoxHelper.ClearTextButton="True"
+                                 Controls:TextBoxHelper.Watermark="Въведи име тук"
+                                 TextChanged="TextBoxChange"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="2">
+                        <Label x:Name="LastNameLabel" Content="Въведете фамилия:"
+                               Style="{StaticResource FormLabel}"/>
+                        <TextBox x:Name="LastNameTextBox" Height="30"
+                                 Controls:TextBoxHelper.ClearTextButton="True"
+                                 Controls:TextBoxHelper.Watermark="Въведи фамилия тук"
+                                 TextChanged="TextBoxChange"/>
+                    </StackPanel>
+
+                    <!-- Ред 2 -->
+                    <StackPanel Grid.Row="2" Grid.Column="0">
+                        <Label x:Name="EGNLabel" Content="Въведете ЕГН:"
+                               Style="{StaticResource FormLabel}"/>
+                        <TextBox x:Name="EGNTextBox" Height="30"
+                                 Controls:TextBoxHelper.ClearTextButton="True"
+                                 Controls:TextBoxHelper.Watermark="Въведи ЕГН тук"
+                                 TextChanged="TextBoxChange"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="2">
+                        <Label x:Name="CardIdLabel" Content="Въведете № ЛК:"
+                               Style="{StaticResource FormLabel}"/>
+                        <TextBox x:Name="CardIdTextBox" Height="30"
+                                 Controls:TextBoxHelper.ClearTextButton="True"
+                                 Controls:TextBoxHelper.Watermark="Въведи № на лична карта"
+                                 TextChanged="TextBoxChange"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Пол -->
+                <StackPanel Margin="0,12,0,0">
+                    <Label x:Name="GenderPickerLabel" Content="Изберете пол:"
+                           Style="{StaticResource FormLabel}"/>
+                    <Controls:SplitButton x:Name="GenderPickerButton"
+                           DisplayMemberPath="Name" Height="32"
+                           SelectionChanged="GenderPickerButton_SelectionChanged"/>
+                </StackPanel>
+
+                <!-- Автомобил -->
+                <StackPanel Margin="0,12,0,0">
+                    <Label x:Name="CarPickerLabel" Content="Изберете автомобил:"
+                           Style="{StaticResource FormLabel}"/>
+                    <Controls:SplitButton x:Name="CarPickerButton"
+                           DisplayMemberPath="DisplayName" Height="32"
+                           SelectionChanged="CarPickerButton_SelectionChanged"/>
+                </StackPanel>
+
+                <!-- Разделител -->
+                <Rectangle Height="1" Fill="#E0E6EA" Margin="0,16,0,12"/>
+
+                <!-- Бутони -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="CancelButton" Grid.Column="0"
+                            Content="Отказ"
+                            Style="{StaticResource NeutralButton}"
+                            Click="CancelButton_Click"/>
+                    <Button x:Name="ClearButton" Grid.Column="2"
+                            Content="Изчисти полетата"
+                            Style="{StaticResource NeutralButton}"
+                            Click="ClearButton_Click" IsEnabled="False"/>
+                    <Button x:Name="SaveButton" Grid.Column="4"
+                            Content="Запиши"
+                            Style="{StaticResource SuccessButton}"
+                            Click="SaveButton_Click" IsEnabled="False"/>
+                </Grid>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Controls:MetroWindow>

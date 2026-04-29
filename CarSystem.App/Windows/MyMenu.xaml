@@ -1,0 +1,122 @@
+<Controls:MetroWindow x:Name="MyMenuWindow" x:Class="CarSystem.App.Windows.MyMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarSystem.App.Windows"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Меню" Height="720" Width="1280"
+        GlowBrush="#1A2F4B" BorderBrush="#1A2F4B"
+        Background="#EEF1F5"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Opacity="0">
+
+    <Controls:MetroWindow.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     From="0" To="1" Duration="0:0:0.25">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Controls:MetroWindow.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Хедър -->
+        <Border Grid.Row="0" Background="#1A2F4B">
+            <Grid>
+                <Button x:Name="PreviousButton"
+                        HorizontalAlignment="Left" VerticalAlignment="Center"
+                        Margin="12,0,0,0" Width="40" Height="40" Cursor="Hand"
+                        ToolTip="Върни се към предишния екран"
+                        Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                        BorderBrush="White"
+                        Click="PreviousButton_Click">
+                    <Image Source="/CarSystem.App;component/Images/Previous.png" Height="30" Width="30" RenderTransformOrigin="0.017,0.54"/>
+                </Button>
+                <TextBlock Text="ГЛАВНО МЕНЮ"
+                           Foreground="White" FontSize="18" FontWeight="Bold"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Плочки -->
+        <StackPanel Grid.Row="1" Margin="20" VerticalAlignment="Center">
+
+            <Controls:Tile x:Name="ViolationsTile"
+                    Title="Нарушения"
+                    TitleFontSize="15"
+                    Background="#9B2335"
+                    Foreground="White"
+                    Height="136" Cursor="Hand"
+                    Margin="0,0,0,14"
+                    Click="ViolationsTile_Click" Width="640">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="129*"/>
+                        <ColumnDefinition Width="275*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/CarSystem.App;component/Images/Violations.png"
+                           Height="72" Margin="20,0,20,0" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Преглед, филтриране и управление на регистрирани нарушения"
+                               Foreground="White" FontSize="13"
+                               VerticalAlignment="Top" TextWrapping="Wrap" Margin="0,13,16,0" Grid.ColumnSpan="2"/>
+                </Grid>
+            </Controls:Tile>
+
+            <Controls:Tile x:Name="ReferencesTile"
+                    Title="Справки"
+                    TitleFontSize="15"
+                    Background="#154360"
+                    Foreground="White"
+                    Height="136" Cursor="Hand"
+                    Margin="0,0,0,14"
+                    Click="ReferencesTile_Click" Width="640">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/CarSystem.App;component/Images/References.png"
+                           Height="68" Margin="20,0,20,0" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Генерирайте PDF справки по лице или превозно средство"
+                               Foreground="White" FontSize="13"
+                               VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,16,28"/>
+                </Grid>
+            </Controls:Tile>
+            <Controls:Tile x:Name="RegistrationsTile"
+                           HorizontalAlignment="Center"
+                    Title="Регистрации"
+                    TitleFontSize="15"
+                    Background="#145A32"
+                    Foreground="White"
+                    Height="115" Cursor="Hand"
+                    Click="RegistrationsTile_Click" Width="640">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/CarSystem.App;component/Images/Registrations.png"
+                           Height="72" Margin="20,0,20,0" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Регистрирайте нови клиенти и автомобили в системата"
+                               Foreground="White" FontSize="13"
+                               VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,16,28"/>
+                </Grid>
+            </Controls:Tile>
+
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>

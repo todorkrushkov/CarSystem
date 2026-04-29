@@ -1,0 +1,110 @@
+<Controls:MetroWindow x:Name="RegistrationsWindow" x:Class="CarSystem.App.Windows.Registrations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarSystem.App.Windows"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Регистрации" Height="720" Width="1280"
+        GlowBrush="#1A2F4B" BorderBrush="#1A2F4B"
+        Background="#EEF1F5"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Opacity="0">
+
+    <Controls:MetroWindow.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     From="0" To="1" Duration="0:0:0.25">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Controls:MetroWindow.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Хедър -->
+        <Border Grid.Row="0" Background="#1A2F4B">
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"
+                            VerticalAlignment="Center" Margin="12,0,0,0">
+                    <Button x:Name="PreviousButton"
+                            Width="40" Height="40" Cursor="Hand"
+                            ToolTip="Върни се към предишния екран"
+                            Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                            BorderBrush="White" Margin="0,0,6,0"
+                            Click="PreviousButton_Click">
+                        <Image Source="/CarSystem.App;component/Images/Previous.png" Height="20" Width="18"/>
+                    </Button>
+                    <Button x:Name="HomeScreenButton"
+                            Width="40" Height="40" Cursor="Hand"
+                            ToolTip="Върни се към началния екран"
+                            Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                            BorderBrush="White"
+                            Click="HomeScreenButton_Click">
+                        <Image Source="/CarSystem.App;component/Images/HomeScreen.png" Height="22" Width="20"/>
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="РЕГИСТРАЦИИ"
+                           Foreground="White" FontSize="18" FontWeight="Bold"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Плочки -->
+        <StackPanel Grid.Row="1" Margin="20" VerticalAlignment="Center">
+
+            <Controls:Tile x:Name="AddPersonTile"
+                    Title="Регистрирай клиент"
+                    TitleFontSize="15"
+                    Background="#154360"
+                    Foreground="White"
+                    Height="156" Cursor="Hand"
+                    Margin="0,0,0,16"
+                    Click="AddPersonTile_Click" Width="640">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/CarSystem.App;component/Images/AddPerson.png"
+                           Height="100" Margin="20,0,20,0" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Добавяне на нов клиент в системата с лична карта и ЕГН"
+                               Foreground="White" FontSize="13"
+                               VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,16,30"/>
+                </Grid>
+            </Controls:Tile>
+
+            <Controls:Tile x:Name="AddCarTile"
+                    Title="Регистрирай автомобил"
+                    TitleFontSize="15"
+                    Background="#145A32"
+                    Foreground="White"
+                    Height="156" Cursor="Hand"
+                    Click="AddCarTile_Click" Width="640">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/CarSystem.App;component/Images/Car.png"
+                           Height="100" Margin="20,0,20,0" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Добавяне на ново превозно средство с марка, модел и номер"
+                               Foreground="White" FontSize="13"
+                               VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,16,30"/>
+                </Grid>
+            </Controls:Tile>
+
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>
